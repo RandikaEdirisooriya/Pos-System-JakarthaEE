@@ -1,12 +1,10 @@
 package lk.ijse.Dao;
 
-import com.example.bootstrapposbackend.dao.custom.impl.CustomerDataProcess;
-import com.example.bootstrapposbackend.dao.custom.impl.ItemDataProcess;
-import com.example.bootstrapposbackend.dao.custom.impl.OrderDataProcess;
-import com.example.bootstrapposbackend.dao.custom.impl.UserDataProcess;
+
+import lk.ijse.Dao.custom.impl.CustomerDaoImpl;
 
 public class DAOFactory {
-    public static DAOFactory daoFactory;
+ /*   public static DAOFactory daoFactory;
 
     private DAOFactory(){}
 
@@ -21,15 +19,15 @@ public class DAOFactory {
     public SuperDAO getDao(DAOType daoType){
         switch (daoType){
             case CUSTOMER:
-                return new CustomerDataProcess();
-            case ITEM:
+               *//* return new CustomerDaoImpl();*//*
+        *//*    case ITEM:
                 return new ItemDataProcess();
             case ORDER:
                 return new OrderDataProcess();
             case USER:
                 return new UserDataProcess();
             default:
-                return null;
+                return null;*//*
         }
-    }
+    */
 }
