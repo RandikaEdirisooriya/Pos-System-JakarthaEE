@@ -1,9 +1,10 @@
-package lk.ijse.Bo;
+package lk.ijse.bo;
 
 
+import lk.ijse.bo.custom.impl.CustomerBOImpl;
 
 public class BOFactory {
-/*    public static BOFactory boFactory;
+    public static BOFactory boFactory;
 
     private BOFactory() {}
 
@@ -19,14 +20,14 @@ public class BOFactory {
         switch (boType){
             case CUSTOMER:
                 return new CustomerBOImpl();
-            case ITEM:
+            /*case ITEM:
                 return new ItemBOImpl();
             case ORDER:
                 return new OrderBOImpl();
             case USER:
-                return new UserBOImpl();
+                return new UserBOImpl();*/
             default:
                 return null;
         }
-    }*/
+    }
 }

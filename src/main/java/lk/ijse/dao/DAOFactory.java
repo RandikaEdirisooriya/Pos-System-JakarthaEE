@@ -1,10 +1,10 @@
-package lk.ijse.Dao;
+package lk.ijse.dao;
 
 
-import lk.ijse.Dao.custom.impl.CustomerDaoImpl;
+import lk.ijse.dao.custom.impl.CustomerDataProcess;
 
 public class DAOFactory {
- /*   public static DAOFactory daoFactory;
+    public static DAOFactory daoFactory;
 
     private DAOFactory(){}
 
@@ -19,15 +19,15 @@ public class DAOFactory {
     public SuperDAO getDao(DAOType daoType){
         switch (daoType){
             case CUSTOMER:
-               *//* return new CustomerDaoImpl();*//*
-        *//*    case ITEM:
+                return new CustomerDataProcess();
+          /*  case ITEM:
                 return new ItemDataProcess();
             case ORDER:
                 return new OrderDataProcess();
             case USER:
-                return new UserDataProcess();
+                return new UserDataProcess();*/
             default:
-                return null;*//*
+                return null;
         }
-    */
+    }
 }

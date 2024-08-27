@@ -7,6 +7,8 @@
     <groupId>lk.ijse</groupId>
     <artifactId>Pos-System-Backend-jakarthaEE</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Pos-System-Backend-jakarthaEE</name>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -84,14 +86,14 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-            <plugin>
+         <!--   <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
