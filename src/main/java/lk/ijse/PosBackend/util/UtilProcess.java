@@ -1,4 +1,4 @@
-package lk.ijse.util;
+package lk.ijse.PosBackend.util;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package lk.ijse.entity;
+package lk.ijse.PosBackend.entity;
 
 
 import jakarta.persistence.Entity;
@@ -18,5 +18,6 @@ public class Customer {
     String id;
     String name;
     String address;
-    double salary;
+   String contact;
+   String email;
 }

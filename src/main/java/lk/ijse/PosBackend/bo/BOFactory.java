@@ -1,7 +1,6 @@
-package lk.ijse.bo;
+package lk.ijse.PosBackend.bo;
 
-
-import lk.ijse.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.PosBackend.bo.custom.impl.CustomerBOImpl;
 
 public class BOFactory {
     public static BOFactory boFactory;
@@ -20,7 +19,7 @@ public class BOFactory {
         switch (boType){
             case CUSTOMER:
                 return new CustomerBOImpl();
-            /*case ITEM:
+          /*  case ITEM:
                 return new ItemBOImpl();
             case ORDER:
                 return new OrderBOImpl();

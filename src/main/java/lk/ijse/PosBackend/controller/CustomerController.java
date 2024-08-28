@@ -1,6 +1,9 @@
-package lk.ijse.controller;
+package lk.ijse.PosBackend.controller;
 
-
+import lk.ijse.PosBackend.bo.BOFactory;
+import lk.ijse.PosBackend.bo.custom.CustomerBO;
+import lk.ijse.PosBackend.dto.CustomerDTO;
+import lk.ijse.PosBackend.util.UtilProcess;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.ServletException;
@@ -8,12 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.bo.BOFactory;
-import lk.ijse.bo.custom.CustomerBO;
-import lk.ijse.dto.CustomerDTO;
-import lk.ijse.util.UtilProcess;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -28,7 +25,7 @@ public class CustomerController extends HttpServlet {
 
     private CustomerBO customerBO= (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOType.CUSTOMER);
 
-    static Logger logger = LoggerFactory.getLogger(CustomerController.class);
+ /*   static Logger logger = LoggerFactory.getLogger(CustomerController.class);*/
 
 
 
@@ -37,7 +34,7 @@ public class CustomerController extends HttpServlet {
 
         try {
             var ctx = new InitialContext();
-            DataSource pool = (DataSource) ctx.lookup("java:comp/env/jdbc/yourshop");
+            DataSource pool = (DataSource) ctx.lookup("java:comp/env/jdbc/pos");
             this.connection = pool.getConnection();
         }catch (Exception e) {
             e.printStackTrace();
@@ -46,7 +43,7 @@ public class CustomerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Inside customer post method");
+       /* logger.info("Inside customer post method");*/
         try {
             if (!"application/json".equalsIgnoreCase(req.getContentType())) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Expected content type: application/json");
@@ -63,14 +60,14 @@ public class CustomerController extends HttpServlet {
                 resp.getWriter().write("Customer saved successfully");
             }
         }catch (Exception e) {
-            logger.error("Error: ",e.getMessage());
+        /*    logger.error("Error: ",e.getMessage());*/
             e.printStackTrace();
         }
     }
 
-   /* @Override
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Inside customer Get method");
+      /*  logger.info("Inside customer Get method");*/
 
         String id = req.getParameter("id");
         if (id == null) {
@@ -88,14 +85,14 @@ public class CustomerController extends HttpServlet {
             Jsonb jsonb = JsonbBuilder.create();
             jsonb.toJson(customer,writer);
         }catch (Exception e) {
-            logger.error("Error: ",e.getMessage());
+         /*   logger.error("Error: ",e.getMessage());*/
             e.printStackTrace();
         }
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Inside customer Put method");
+      /*  logger.info("Inside customer Put method");*/
         try {
             if (!"application/json".equalsIgnoreCase(req.getContentType())) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Expected content type: application/json");
@@ -104,20 +101,21 @@ public class CustomerController extends HttpServlet {
             Jsonb jsonb = JsonbBuilder.create();
             CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
             boolean updateCustomer = customerBO.updateCustomer(customerDTO, String.valueOf(customerDTO.getId()),connection);
+
             if (updateCustomer) {
                 resp.getWriter().write("Customer update saved");
             }else {
                 resp.getWriter().write("Customer update successfully");
             }
         }catch (Exception e) {
-            logger.error("Error: ",e.getMessage());
+          /*  logger.error("Error: ",e.getMessage());*/
             e.printStackTrace();
         }
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Inside customer Delete method");
+      /*  logger.info("Inside customer Delete method");*/
         try {
             if (!"application/json".equalsIgnoreCase(req.getContentType())) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Expected content type: application/json");
@@ -133,13 +131,13 @@ public class CustomerController extends HttpServlet {
             }
 
         }catch (Exception e) {
-            logger.error("Error: ",e.getMessage());
+           /* logger.error("Error: ",e.getMessage());*/
             e.printStackTrace();
         }
     }
 
     protected void GetAllCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Inside customer GetAll method");
+    /*    logger.info("Inside customer GetAll method");*/
 
         try {
             if (!"application/json".equalsIgnoreCase(req.getContentType())) {
@@ -152,9 +150,9 @@ public class CustomerController extends HttpServlet {
             Jsonb jsonb = JsonbBuilder.create();
             jsonb.toJson(allCustomer,writer);
         }catch (Exception e) {
-            logger.error("Error: ",e.getMessage());
+           /* logger.error("Error: ",e.getMessage());*/
             e.printStackTrace();
         }
     }
-*/
+
 }

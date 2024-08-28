@@ -1,12 +1,10 @@
-package lk.ijse.bo.custom.impl;
+package lk.ijse.PosBackend.bo.custom.impl;
 
-
-
-import lk.ijse.bo.custom.CustomerBO;
-import lk.ijse.dao.DAOFactory;
-import lk.ijse.dao.custom.CustomerData;
-import lk.ijse.dto.CustomerDTO;
-import lk.ijse.entity.Customer;
+import lk.ijse.PosBackend.bo.custom.CustomerBO;
+import lk.ijse.PosBackend.dao.DAOFactory;
+import lk.ijse.PosBackend.dao.custom.CustomerDao;
+import lk.ijse.PosBackend.dto.CustomerDTO;
+import lk.ijse.PosBackend.entity.Customer;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -14,12 +12,12 @@ import java.util.List;
 
 public class CustomerBOImpl implements CustomerBO {
 
-    CustomerData customerData= (CustomerData) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
+    CustomerDao customerData= (CustomerDao) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
 
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO, Connection connection) {
-        return customerData.save(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary()),connection);
+        return customerData.save(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail()),connection);
     }
 
     @Override
@@ -31,7 +29,8 @@ public class CustomerBOImpl implements CustomerBO {
             customerDTO.setId(customer.getId());
             customerDTO.setName(customer.getName());
             customerDTO.setAddress(customer.getAddress());
-            customerDTO.setSalary(customer.getSalary());
+            customerDTO.setContact(customer.getContact());
+            customerDTO.setEmail(customer.getEmail());
 
             customerDTOList.add(customerDTO);
         }
@@ -41,7 +40,7 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO, String Id, Connection connection) {
-        return customerData.update(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary()),Id,connection);
+        return customerData.update(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail()),Id,connection);
     }
 
     @Override
@@ -61,7 +60,8 @@ public class CustomerBOImpl implements CustomerBO {
         customerDTO.setId(customer.getId());
         customerDTO.setName(customer.getName());
         customerDTO.setAddress(customer.getAddress());
-        customerDTO.setSalary(customer.getSalary());
+        customerDTO.setContact(customer.getContact());
+        customerDTO.setEmail(customer.getEmail());
 
         return customerDTO;
     }

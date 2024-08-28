@@ -1,4 +1,4 @@
-package lk.ijse.dao;
+package lk.ijse.PosBackend.dao;
 
 import java.sql.Connection;
 import java.util.List;

@@ -1,16 +1,15 @@
-package lk.ijse.dto;
-
+package lk.ijse.PosBackend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CustomerDTO {
+public class ItemDto {
     String id;
     String name;
-    String address;
-    double salary;
+    double price;
+    int qty;
 }
+

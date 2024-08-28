@@ -1,9 +1,7 @@
-package lk.ijse.bo.custom;
+package lk.ijse.PosBackend.bo.custom;
 
-
-
-import lk.ijse.bo.SuperBO;
-import lk.ijse.dto.CustomerDTO;
+import lk.ijse.PosBackend.bo.SuperBO;
+import lk.ijse.PosBackend.dto.CustomerDTO;
 
 import java.sql.Connection;
 import java.util.List;
